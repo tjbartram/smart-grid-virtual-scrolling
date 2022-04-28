@@ -18,7 +18,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   dataSource = new Smart.DataAdapter({
     virtualDataSourceLength: 100000,
-    virtualDataSourceCache: false,
+    virtualDataSourceCache: true,
     virtualDataSource: function (resultCallbackFunction, details) {
       setTimeout(function () {
         resultCallbackFunction({
@@ -61,9 +61,13 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   init(): void {
     // init code.
+  }
+
+  buttonClick(event: any): void {
+    //Reseting the datasource causes an error and does not update the number of records
     let dataSource = new Smart.DataAdapter({
-      virtualDataSourceLength: 100000,
-      virtualDataSourceCache: false,
+      virtualDataSourceLength: 100,
+      virtualDataSourceCache: true,
       virtualDataSource: function (resultCallbackFunction, details) {
         setTimeout(function () {
           resultCallbackFunction({
